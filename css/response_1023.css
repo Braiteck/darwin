@@ -215,6 +215,33 @@
     }
 
 
+    header .menu .sub_menu .sub_menu,
+    header .menu .sub_menu > *:hover .sub_menu
+    {
+        position: relative;
+        left: 0;
+
+        display: none;
+        visibility: hidden;
+
+        width: 100%;
+        margin: 4px 0;
+        padding-left: 16px;
+
+        pointer-events: auto;
+
+        opacity: 1;
+    }
+
+    header .menu .sub_menu > * > a.touch_link + .sub_menu.show
+    {
+        left: 0;
+
+        display: block;
+        visibility: visible;
+    }
+
+
     header .socials
     {
         width: 100%;

@@ -153,7 +153,7 @@ $(() => {
 
 
 	if (is_touch_device()) {
-		$('header .menu .item > a.sub_link').addClass('touch_link')
+		$('header .menu .item > a.sub_link, header .menu .sub_menu a.sub_link').addClass('touch_link')
 
 		$('header .menu .item > a.sub_link').click(function (e) {
 			const $dropdown = $(this).next()
@@ -161,7 +161,20 @@ $(() => {
 			if ($dropdown.css('visibility') === 'hidden') {
 				e.preventDefault()
 
-				$('header .menu .sub_menu').removeClass('show')
+				$('header .menu .item > .sub_menu').removeClass('show')
+				$dropdown.addClass('show')
+
+				$('body').css('cursor', 'pointer')
+			}
+		})
+
+		$('header .menu .sub_menu a.sub_link').click(function (e) {
+			const $dropdown = $(this).next()
+
+			if ($dropdown.css('visibility') === 'hidden') {
+				e.preventDefault()
+
+				$('header .menu .sub_menu .sub_menu').removeClass('show')
 				$dropdown.addClass('show')
 
 				$('body').css('cursor', 'pointer')

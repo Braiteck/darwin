@@ -946,7 +946,7 @@ header .menu .item:hover > a.touch_link + .sub_menu
     opacity: 0;
 }
 
-header .menu .item:hover .sub_menu,
+header .menu .item:hover > .sub_menu,
 header .menu .item > a.touch_link + .sub_menu.show
 {
     top: calc(100% + 10px);
@@ -965,6 +965,8 @@ header .menu .sub_menu a
     font-weight: 600;
     line-height: 19px;
 
+    position: relative;
+
     display: block;
 
     padding: 8px 24px;
@@ -975,10 +977,72 @@ header .menu .sub_menu a
     text-transform: uppercase;
 }
 
+header .menu .sub_menu a.sub_link
+{
+    padding-right: 40px;
+}
+
+header .menu .sub_menu a.sub_link:after
+{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    bottom: 0;
+
+    display: block;
+
+    width: 8px;
+    height: 8px;
+    margin: auto;
+
+    content: '';
+    transition: border-color .2s linear;
+    transform: rotate(-45deg);
+
+    opacity: .65;
+    border-right: 2px solid #333;
+    border-bottom: 2px solid #333;
+}
+
 header .menu .sub_menu a:hover,
 header .menu .sub_menu a.active
 {
     color: #e67642;
+}
+
+header .menu .sub_menu a:hover:after,
+header .menu .sub_menu a.active:after
+{
+    border-color: #e67642;
+}
+
+
+header .menu .sub_menu .sub_menu
+{
+    top: 0;
+    left: calc(100% + 30px);
+}
+
+header .menu .sub_menu > *:hover .sub_menu,
+header .menu .sub_menu > * > a.touch_link + .sub_menu.show
+{
+    left: calc(100% + 10px);
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    opacity: 1;
+}
+
+header .menu .sub_menu .sub_menu:before
+{
+    right: 100%;
+    bottom: 0;
+    left: auto;
+
+    width: 10px;
+    height: 100%;
 }
 
 
@@ -1447,7 +1511,7 @@ aside .categories .category a
     display: flex;
 
     min-height: 60px;
-    padding: 12px 60px 12px 24px;
+    padding: 12px 24px;
 
     transition: .2s linear;
     text-decoration: none;
@@ -1457,6 +1521,11 @@ aside .categories .category a
     align-items: center;
     align-content: center;
     flex-wrap: wrap;
+}
+
+aside .categories .category a.sub_link
+{
+    padding-right: 60px;
 }
 
 
@@ -1497,6 +1566,46 @@ aside .categories .category .arrow:after
 }
 
 
+aside .categories .sub
+{
+    display: none;
+
+    margin-top: 1px;
+}
+
+aside .categories .sub .category
+{
+    background: #f4f4f4;
+}
+
+aside .categories .sub > * + *
+{
+    margin-top: 1px;
+}
+
+aside .categories .sub .category a
+{
+    color: #5e5e5e;
+
+    padding-left: 34px;
+}
+
+aside .categories .sub .sub .category a
+{
+    padding-left: 44px;
+}
+
+aside .categories .sub .sub .sub .category a
+{
+    padding-left: 54px;
+}
+
+aside .categories .sub .sub .sub .sub .category a
+{
+    padding-left: 64px;
+}
+
+
 aside .categories .category:hover a,
 aside .categories .category.active a
 {
@@ -1519,94 +1628,6 @@ aside .categories .category.active .arrow:after
 
     opacity: 1;
     border-color: #fff;
-}
-
-
-aside .categories .sub
-{
-    display: none;
-}
-
-aside .categories .sub > *
-{
-    position: relative;
-
-    background: #f4f4f4;
-}
-
-aside .categories .sub > * + *
-{
-    margin-top: 1px;
-}
-
-
-aside .categories .sub a
-{
-    color: #5e5e5e;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 16px;
-
-    position: relative;
-
-    display: flex;
-
-    min-height: 60px;
-    padding: 12px 60px 12px 24px;
-
-    transition: color .2s linear;
-    text-decoration: none;
-    text-transform: uppercase;
-
-    justify-content: flex-start;
-    align-items: center;
-    align-content: center;
-    flex-wrap: wrap;
-}
-
-
-aside .categories .sub .arrow
-{
-    position: absolute;
-    z-index: 3;
-    top: 0;
-    right: 0;
-
-    width: 61px;
-    height: 100%;
-
-    cursor: pointer;
-    pointer-events: none;
-}
-
-aside .categories .sub .arrow:after
-{
-    position: absolute;
-    top: -5px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    display: block;
-
-    width: 10px;
-    height: 10px;
-    margin: auto;
-
-    content: '';
-    transition: .2s linear;
-    transform: rotate(-45deg);
-
-    opacity: .5;
-    border-bottom: 2px solid #333;
-    border-left: 2px solid #333;
-}
-
-
-aside .categories .sub > *:hover a,
-aside .categories .sub > *.active a
-{
-    color: #e67642;
 }
 
 
